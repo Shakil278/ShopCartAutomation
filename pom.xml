@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="
+            http://maven.apache.org/POM/4.0.0
+            https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- =========================================================
+         PROJECT INFORMATION
+         ========================================================= -->
+
+    <groupId>com.shakil.automation</groupId>
+    <artifactId>selenium-automation-framework</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <name>Selenium Automation Framework</name>
+
+    <description>
+        Professional Selenium Java automation framework using
+        TestNG, Page Object Model, Maven and ExtentReports
+    </description>
+
+
+    <!-- =========================================================
+         PROPERTIES
+         ========================================================= -->
+
+    <properties>
+
+        <!-- Java -->
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+
+        <!-- Encoding -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- Selenium -->
+        <selenium.version>4.43.0</selenium.version>
+
+        <!-- TestNG -->
+        <testng.version>7.12.0</testng.version>
+
+        <!-- Jackson JSON -->
+        <jackson.version>2.20.2</jackson.version>
+
+        <!-- ExtentReports -->
+        <extentreports.version>5.1.2</extentreports.version>
+
+        <!-- Log4j -->
+        <log4j.version>2.24.3</log4j.version>
+
+        <!-- Maven plugins -->
+        <maven.compiler.version>3.14.1</maven.compiler.version>
+        <maven.surefire.version>3.5.3</maven.surefire.version>
+
+    </properties>
+
+
+    <!-- =========================================================
+         DEPENDENCIES
+         ========================================================= -->
+
+    <dependencies>
+
+        <!-- =====================================================
+             SELENIUM WEBDRIVER
+             ===================================================== -->
+
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium.version}</version>
+        </dependency>
+
+
+        <!-- =====================================================
+             TESTNG
+             ===================================================== -->
+
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+
+        <!-- =====================================================
+             JACKSON
+             JSON TEST DATA
+             ===================================================== -->
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+
+        <!-- =====================================================
+             EXTENT REPORTS
+             ===================================================== -->
+
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>extentreports</artifactId>
+            <version>${extentreports.version}</version>
+        </dependency>
+
+
+        <!-- =====================================================
+             LOG4J API
+             ===================================================== -->
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
+
+        <!-- =====================================================
+             LOG4J CORE
+             ===================================================== -->
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j.version}</version>
+        </dependency>
+
+    </dependencies>
+
+
+    <!-- =========================================================
+         BUILD
+         ========================================================= -->
+
+    <build>
+
+        <plugins>
+
+            <!-- =================================================
+                 JAVA COMPILER
+                 ================================================= -->
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven.compiler.version}</version>
+
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
+
+
+            <!-- =================================================
+                 MAVEN SUREFIRE
+                 RUN TESTNG TESTS
+                 ================================================= -->
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven.surefire.version}</version>
+
+                <configuration>
+
+                    <!-- TestNG suite -->
+                    <suiteXmlFiles>
+                        <suiteXmlFile>
+                            testng.xml
+                        </suiteXmlFile>
+                    </suiteXmlFiles>
+
+                    <!-- Continue running remaining tests after failure -->
+                    <skipAfterFailureCount>0</skipAfterFailureCount>
+
+                    <!-- UTF-8 encoding -->
+                    <argLine>-Dfile.encoding=UTF-8</argLine>
+
+                </configuration>
+
+            </plugin>
+
+        </plugins>
+
+    </build>
+
+</project>
