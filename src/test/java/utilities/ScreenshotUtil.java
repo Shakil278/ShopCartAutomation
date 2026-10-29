@@ -20,8 +20,10 @@ public class ScreenshotUtil {
 
         File directory = new File(screenshotDirectory);
 
-        if (!directory.exists()) {
-            directory.mkdirs();
+        if(!directory.exists() && !directory.mkdirs()){
+            throw new IOException(
+                    "Could not create screenshot directory: " + directory.getAbsolutePath()
+            );
         }
 
         File source = ((TakesScreenshot) driver)
